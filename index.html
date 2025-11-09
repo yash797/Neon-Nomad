@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Nomad - Where future roams free</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Exo 2 (futuristic) and Inter (fallback) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      // Custom Tailwind colors to match your brand guide
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "neon-lime": "#a3e635", // PMS 802C (approx)
+              "neon-purple": "#a855f7", // Neon Purple
+              "neon-magenta": "#f0abfc", // Approx Neon Magenta/Plastic Pink
+              "neon-teal": "#2dd4bf", // Approx Teal Blue
+              "brand-dark": "#0a0a1a", // Dark charcoal/navy
+              "hero-bg-dark": "#1c0338", // Darker purple/navy base for the hero
+              "nav-bg": "rgba(10, 10, 26, 0.95)", // Semi-transparent brand-dark for nav
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Custom styles for the page */
+      body {
+        /* Set the primary futuristic font */
+        font-family: "Exo 2", "Inter", sans-serif;
+        background-color: #0a0a1a; /* Custom brand-dark */
+        color: #cbd5e1; /* Tailwind slate-300 */
+      }
+
+      /* Fixed Navigation Bar Styling */
+      .navbar {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      /* Hero section background matching the image reference */
+      .hero-section {
+        background-color: var(--hero-bg-dark);
+        background-image: linear-gradient(135deg, #1c0338 0%, #0a0a1a 100%);
+        position: relative;
+        /* Ensure content is spaced out for logo on the right */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 1.5rem; /* Add padding for mobile */
+      }
+
+      /* Helper class for neon text */
+      .text-neon-lime {
+        color: #a3e635;
+        text-shadow: 0 0 5px #a3e635, 0 0 10px #a3e635;
+      }
+      .text-neon-magenta {
+        color: #f0abfc;
+        text-shadow: 0 0 5px #f0abfc, 0 0 10px #f0abfc;
+      }
+
+      /* Custom style for the imported logo image in the Hero section */
+      .hero-logo {
+        filter: drop-shadow(0 0 10px rgba(163, 230, 53, 0.5))
+          drop-shadow(0 0 10px rgba(240, 171, 252, 0.5));
+        width: 15rem; /* Slightly smaller for hero symmetry */
+        height: auto;
+        max-width: 100%;
+      }
+      /* Custom style for the imported logo image in the Identity section */
+      .brand-logo {
+        filter: drop-shadow(0 0 10px rgba(163, 230, 53, 0.5))
+          drop-shadow(0 0 10px rgba(240, 171, 252, 0.5));
+        width: 20rem; /* Responsive sizing for the image */
+        height: auto;
+        max-width: 100%;
+      }
+
+      /* Glowing border effect on hover */
+      .hover-glow-border-lime {
+        transition: all 0.3s ease;
+        border-color: #334155; /* slate-700 */
+      }
+      .hover-glow-border-lime:hover {
+        border-color: #a3e635;
+        box-shadow: 0 0 15px rgba(163, 230, 53, 0.4);
+      }
+
+      .hover-glow-border-magenta {
+        transition: all 0.3s ease;
+        border-color: #334155; /* slate-700 */
+      }
+      .hover-glow-border-magenta:hover {
+        border-color: #f0abfc;
+        box-shadow: 0 0 15px rgba(240, 171, 252, 0.4);
+      }
+
+      /* Neon button */
+      .btn-neon {
+        position: relative;
+        display: inline-block;
+        padding: 12px 28px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #0a0a1a;
+        background: #a3e635; /* Neon Lime */
+        border: 1px solid #a3e635;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(163, 230, 53, 0.5);
+      }
+      .btn-neon:hover {
+        color: #a3e635;
+        background: transparent;
+        box-shadow: 0 0 20px rgba(163, 230, 53, 0.7),
+          0 0 30px rgba(163, 230, 53, 0.5);
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- ===== Navigation Bar (New) ===== -->
+    <nav
+      class="navbar sticky top-0 z-50 py-4 border-b border-slate-800 bg-nav-bg"
+    >
+      <div
+        class="container mx-auto px-6 max-w-7xl flex justify-between items-center"
+      >
+        <!-- Brand Name in Nav -->
+        <a href="#hero" class="flex items-center gap-2 group">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 800 100"
+            class="w-[200px] md:w-[260px] h-auto transition-transform duration-300 group-hover:scale-105"
+            preserveAspectRatio="xMinYMid meet"
+            aria-label="NEON NOMAD"
+          >
+            <defs>
+              <!-- gradient -->
+              <linearGradient
+                id="navNeonGrad"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop offset="0%" stop-color="#a855f7" />
+                <stop offset="50%" stop-color="#3b82f6" />
+                <stop offset="100%" stop-color="#84cc16" />
+              </linearGradient>
+
+              <!-- glow filter -->
+              <filter id="navGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <text
+              x="0"
+              y="70"
+              font-family="Orbitron, sans-serif"
+              font-weight="900"
+              font-size="70"
+              letter-spacing="4"
+              fill="none"
+              stroke="url(#navNeonGrad)"
+              stroke-width="4"
+              stroke-linejoin="round"
+              style="filter: url(#navGlow); paint-order: stroke"
+            >
+              NEON NOMAD
+            </text>
+          </svg>
+        </a>
+
+        <!-- Navigation Links -->
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#identity"
+            class="text-slate-300 hover:text-neon-magenta transition-all duration-300 relative group"
+          >
+            Identity
+            <span
+              class="absolute bottom-0 left-0 w-full h-0.5 bg-neon-magenta transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+            ></span>
+          </a>
+          <a
+            href="#moodboard"
+            class="text-slate-300 hover:text-neon-lime transition-all duration-300 relative group"
+          >
+            Moodboard
+            <span
+              class="absolute bottom-0 left-0 w-full h-0.5 bg-neon-lime transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+            ></span>
+          </a>
+          <a
+            href="#concepts"
+            class="text-slate-300 hover:text-neon-magenta transition-all duration-300 relative group"
+          >
+            Concepts
+            <span
+              class="absolute bottom-0 left-0 w-full h-0.5 bg-neon-magenta transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+            ></span>
+          </a>
+          <a
+            href="#collection"
+            class="text-slate-300 hover:text-neon-lime transition-all duration-300 relative group"
+          >
+            Collection
+            <span
+              class="absolute bottom-0 left-0 w-full h-0.5 bg-neon-lime transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+            ></span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Placeholder (Not implemented but good practice) -->
+        <button class="md:hidden text-slate-300 hover:text-neon-lime">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ===== Hero Section (UPDATED Layout) ===== -->
+    <!-- F -->
+    <!-- Load Orbitron font (place in <head> if you prefer) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Header block -->
+    <header id="hero" class="min-h-[90vh] hero-section bg-[#0a0a1a]">
+      <div
+        class="container mx-auto px-6 max-w-7xl flex flex-col md:flex-row items-center justify-between gap-12 pt-20 pb-10"
+      >
+        <!-- Left Side: Neon SVG, Tagline & CTA -->
+        <div class="text-center md:text-left md:w-2/3">
+          <!-- SVG Neon Outlined Text (NEON NOMAD on same line) -->
+          <div class="w-full flex items-center justify-start">
+            <svg
+              class="w-full max-w-[1000px] h-auto"
+              viewBox="0 0 1600 220"
+              preserveAspectRatio="xMinYMid meet"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="NEON NOMAD"
+            >
+              <defs>
+                <!-- horizontal gradient for stroke -->
+                <linearGradient id="neonGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+                  <stop offset="0%" stop-color="#a855f7" />
+                  <stop offset="50%" stop-color="#3b82f6" />
+                  <stop offset="100%" stop-color="#84cc16" />
+                </linearGradient>
+
+                <!-- glow filter -->
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="8" result="coloredBlur" />
+                  <feMerge>
+                    <feMergeNode in="coloredBlur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- Stroked (hollow) text -->
+              <text
+                x="0"
+                y="150"
+                font-family="Orbitron, sans-serif"
+                font-weight="900"
+                font-size="160"
+                letter-spacing="6"
+                fill="none"
+                stroke="url(#neonGrad)"
+                stroke-width="8"
+                stroke-linejoin="round"
+                style="paint-order: stroke; filter: url(#glow)"
+              >
+                NEON NOMAD
+              </text>
+
+              <!-- Optional fine inner outline (subtle) -->
+              <text
+                x="0"
+                y="150"
+                font-family="Orbitron, sans-serif"
+                font-weight="700"
+                font-size="160"
+                letter-spacing="6"
+                fill="none"
+                stroke="rgba(10,10,26,0.9)"
+                stroke-width="2"
+                stroke-linejoin="round"
+                style="paint-order: stroke"
+              >
+                NEON NOMAD
+              </text>
+            </svg>
+          </div>
+
+          <!-- Tagline -->
+          <p
+            class="mt-4 text-lg md:text-2xl font-light text-[#84cc16] tracking-widest uppercase md:ml-1"
+          >
+            Where future roams free
+          </p>
+
+          <!-- CTA -->
+          <button class="btn-neon mt-12">Enter the Grid</button>
+        </div>
+
+        <!-- Right Side: Logo / image -->
+        <div class="md:w-1/2 flex items-center justify-center md:justify-end">
+          <img
+            src="https://drive.google.com/thumbnail?id=1Vrg3KsJiIvonBHpWed9vKIXwvMNe_pED&sz=w1000"
+            alt="Neon Nomad Design Image"
+            class="brand-image max-w-[500px] md:max-w-[600px] w-full scale-110"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x400/0a0a1a/a3e635?text=Logo+Load+Error'; this.style.filter='none';"
+          />
+        </div>
+      </div>
+    </header>
+
+    <!-- Optional small CSS that improves the neon button shadow and text glow (put into your CSS file or inside a <style> tag) -->
+    <style>
+      /* soft neon shadow for the button */
+      .shadow-neon {
+        box-shadow: 0 6px 18px rgba(36, 99, 255, 0.08),
+          0 0 18px rgba(132, 204, 22, 0.12), 0 0 36px rgba(168, 85, 247, 0.08);
+      }
+
+
+      /* Responsive tweak: reduce SVG size on small screens */
+      @media (max-width: 640px) {
+        header svg text {
+          font-size: 90px !important;
+          letter-spacing: 3px !important;
+        }
+      }
+    </style>
+
+    <main>
+      <!-- ===== Brand Identity Section ===== -->
+      <section id="identity" class="py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-6xl">
+          <div
+            class="flex flex-col md:flex-row items-center justify-between gap-12"
+          >
+            <!-- Brand Statement from your slide -->
+            <div class="w-full md:w-1/2 md:pr-10">
+                <h2
+                class="flex items-center justify-center gap-4 text-white font-bold mb-16 text-center"
+              >
+                <span class="text-5xl md:text-7xl leading-none">Brand</span>
+                <span class="inline-flex items-center align-middle pt-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 420 120"
+                    class="h-[70px] md:h-[90px] w-auto"
+                    preserveAspectRatio="xMinYMid meet"
+                    aria-label="Vibe"
+                    style="display: block"
+                  >
+                    <defs>
+                      <!-- gradient -->
+                      <linearGradient
+                        id="navNeonGrad"
+                        x1="0%"
+                        x2="100%"
+                        y1="0%"
+                        y2="0%"
+                      >
+                        <stop offset="0%" stop-color="#a855f7" />
+                        <stop offset="50%" stop-color="#3b82f6" />
+                        <stop offset="100%" stop-color="#84cc16" />
+                      </linearGradient>
+    
+                      <!-- glow filter -->
+                      <filter
+                        id="navGlow"
+                        x="-50%"
+                        y="-50%"
+                        width="200%"
+                        height="200%"
+                      >
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                        <feMerge>
+                          <feMergeNode in="coloredBlur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
+                    </defs>
+    
+                    <text
+                      x="0"
+                      y="50%"
+                      dominant-baseline="middle"
+                      alignment-baseline="middle"
+                      font-family="Orbitron, sans-serif"
+                      font-weight="900"
+                      font-size="90"
+                      letter-spacing="4"
+                      fill="none"
+                      stroke="url(#navNeonGrad)"
+                      stroke-width="4"
+                      stroke-linejoin="round"
+                      style="filter: url(#navGlow); paint-order: stroke"
+                    >
+                      Identity
+                    </text>
+                  </svg>
+                </span>
+              </h2>
+              <p
+                class="text-lg md:text-xl leading-relaxed text-slate-300 border-l-4 border-neon-lime pl-6"
+              >
+                Neon Nomad embodies the spirit of futuristic wanderers who blend
+                technology with self-expression. The brand identity is bold,
+                vibrant, and unapologetically modern, reflecting a lifestyle
+                that thrives on movement, individuality, and digital
+                connectivity. The neon gradient tones highlight an edgy
+                streetwear aesthetic, while the geometric fox symbol represents
+                intelligence, adaptability, and a fearless drive to explore
+                uncharted territory. Neon Nomad is not just fashion—it’s a
+                statement for the digital generation that refuses to be tied
+                down, always evolving, always on the move.
+              </p>
+            </div>
+            <!-- Logo Image (Identity Section) -->
+            <div
+              class="w-full md:w-1/3 flex items-center justify-center mt-12 md:mt-0"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1gBsEJchXIs1NqIHmCK2PSMK0PdmEx3Zd&sz=w1000"
+                alt="Neon Nomad Fox Logo"
+                class="brand-logo max-w-[420px] md:max-w-[520px] w-full mt-4"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x400/0a0a1a/a3e635?text=Logo+Load+Error'; this.style.filter='none';"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Moodboard Gallery Section ===== -->
+      <section id="moodboard" class="py-24 md:py-32 bg-slate-900">
+        <div class="container mx-auto px-6">
+          <h2
+            class="flex items-center justify-center gap-4 text-white font-bold mb-16 text-center"
+          >
+            <span class="text-5xl md:text-7xl leading-none">The</span>
+            <span class="inline-flex items-center align-middle pt-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 320 120"
+                class="h-[70px] md:h-[90px] w-auto"
+                preserveAspectRatio="xMinYMid meet"
+                aria-label="Vibe"
+                style="display: block"
+              >
+                <defs>
+                  <!-- gradient -->
+                  <linearGradient
+                    id="navNeonGrad"
+                    x1="0%"
+                    x2="100%"
+                    y1="0%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stop-color="#a855f7" />
+                    <stop offset="50%" stop-color="#3b82f6" />
+                    <stop offset="100%" stop-color="#84cc16" />
+                  </linearGradient>
+
+                  <!-- glow filter -->
+                  <filter
+                    id="navGlow"
+                    x="-50%"
+                    y="-50%"
+                    width="200%"
+                    height="200%"
+                  >
+                    <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                    <feMerge>
+                      <feMergeNode in="coloredBlur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <text
+                  x="0"
+                  y="50%"
+                  dominant-baseline="middle"
+                  alignment-baseline="middle"
+                  font-family="Orbitron, sans-serif"
+                  font-weight="900"
+                  font-size="90"
+                  letter-spacing="4"
+                  fill="none"
+                  stroke="url(#navNeonGrad)"
+                  stroke-width="4"
+                  stroke-linejoin="round"
+                  style="filter: url(#navGlow); paint-order: stroke"
+                >
+                  Vibe
+                </text>
+              </svg>
+            </span>
+          </h2>
+
+          <!-- UPDATED Image Grid with your new concept boards -->
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+            <!-- Image 1 -->
+            <div
+              class="rounded-lg overflow-hidden shadow-lg transition-transform duration-300 transform hover:scale-105 hover-glow-border-magenta border-2 border-transparent col-span-2 md:row-span-2"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1cqFXUats9m5iVChB9vSIJP9sx15tiis-&sz=w1000"
+                alt="Neon Nomad Mood Board"
+                class="w-full h-full object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/0a0a1a/a3e635?text=Image+Load+Error';"
+              />
+            </div>
+
+            <!-- Image 2 -->
+            <div
+              class="rounded-lg overflow-hidden shadow-lg transition-transform duration-300 transform hover:scale-105 hover-glow-border-lime border-2 border-transparent col-span-2 md:col-span-1"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1wJwBtkNuGJsoXYSyXZ0HmWuZT6qUoavA&sz=w1000"
+                alt="Neon Nomad Concept Design"
+                class="w-full h-full object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/0a0a1a/a3e635?text=Image+Load+Error';"
+              />
+            </div>
+
+            <!-- Image 3 -->
+            <div
+              class="rounded-lg overflow-hidden shadow-lg transition-transform duration-300 transform hover:scale-105 hover-glow-border-magenta border-2 border-transparent col-span-2 md:col-span-1"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1yQHAvVNUEJfKJkeG6hcyFmJ0U48GGEw-&sz=w1000"
+                alt="Neon Nomad Streetwear Style"
+                class="w-full h-full object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/0a0a1a/a3e635?text=Image+Load+Error';"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Design Concepts Section ===== -->
+      <section id="concepts" class="py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <h2
+            class="flex items-center justify-center gap-4 text-white font-bold mb-16 text-center"
+          >
+            <span class="text-5xl md:text-7xl leading-none">Design</span>
+            <span class="inline-flex items-center align-middle pt-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 520 120"
+                class="h-[70px] md:h-[90px] w-auto"
+                preserveAspectRatio="xMinYMid meet"
+                aria-label="Vibe"
+                style="display: block"
+              >
+                <defs>
+                  <!-- gradient -->
+                  <linearGradient
+                    id="navNeonGrad"
+                    x1="0%"
+                    x2="100%"
+                    y1="0%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stop-color="#a855f7" />
+                    <stop offset="50%" stop-color="#3b82f6" />
+                    <stop offset="100%" stop-color="#84cc16" />
+                  </linearGradient>
+
+                  <!-- glow filter -->
+                  <filter
+                    id="navGlow"
+                    x="-50%"
+                    y="-50%"
+                    width="200%"
+                    height="200%"
+                  >
+                    <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                    <feMerge>
+                      <feMergeNode in="coloredBlur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <text
+                  x="0"
+                  y="50%"
+                  dominant-baseline="middle"
+                  alignment-baseline="middle"
+                  font-family="Orbitron, sans-serif"
+                  font-weight="900"
+                  font-size="90"
+                  letter-spacing="4"
+                  fill="none"
+                  stroke="url(#navNeonGrad)"
+                  stroke-width="4"
+                  stroke-linejoin="round"
+                  style="filter: url(#navGlow); paint-order: stroke"
+                >
+                  Concepts
+                </text>
+              </svg>
+            </span>
+          </h2>
+          <!-- UPDATED cards based on your WGSN slides -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Concept 1: Protective Design -->
+            <div
+              class="border border-slate-700 bg-slate-900 p-8 rounded-lg text-center hover-glow-border-lime"
+            >
+              <!-- Icon: Shield -->
+              <svg
+                class="w-12 h-12 mb-4 mx-auto text-neon-lime"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <h3 class="text-2xl font-bold text-white mb-3">
+                Futuristic Vendor
+              </h3>
+              <p class="text-slate-400">
+                #NomadicSpirit exploring #FutureRealms through #Innovation,
+                #Adaptability, and boundless #Style.
+              </p>
+            </div>
+
+            <!-- Concept 2: Dopamine Brights -->
+            <div
+              class="border border-slate-700 bg-slate-900 p-8 rounded-lg text-center hover-glow-border-magenta"
+            >
+              <!-- Icon: Sparkles -->
+              <svg
+                class="w-12 h-12 mb-4 mx-auto text-neon-magenta"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                ></path>
+              </svg>
+              <h3 class="text-2xl font-bold text-white mb-3">
+                Dopamine Brights
+              </h3>
+              <p class="text-slate-400">
+                #DopamineBrights and #Hyperbrights. Using #CyberLime and Neon
+                Pink as subversive, playful, and energetic accents.
+              </p>
+            </div>
+
+            <!-- Concept 3: Artificial Hues -->
+            <div
+              class="border border-slate-700 bg-slate-900 p-8 rounded-lg text-center hover-glow-border-lime"
+            >
+              <!-- Icon: Layers/Glow -->
+              <svg
+                class="w-12 h-12 mb-4 mx-auto text-neon-lime"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3v18"></path>
+                <path d="M18 9l-6-6-6 6"></path>
+              </svg>
+              <h3 class="text-2xl font-bold text-white mb-3">Nocturnal Hues</h3>
+              <p class="text-slate-400">
+                #GlowInTheDark and #ArtificialHues for #DarkNights. Impactful
+                combos of darks and brights, reflective trims, and light-up
+                elements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Collection Preview Section ===== -->
+      <section id="collection" class="py-24 md:py-32 bg-slate-900">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <h2
+            class="flex items-center justify-center gap-4 text-white font-bold mb-16 text-center"
+          >
+            <span class="text-5xl md:text-7xl leading-none">Collection</span>
+            <span class="inline-flex items-center align-middle pt-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 620 120"
+                class="h-[70px] md:h-[90px] w-auto"
+                preserveAspectRatio="xMinYMid meet"
+                aria-label="Vibe"
+                style="display: block"
+              >
+                <defs>
+                  <!-- gradient -->
+                  <linearGradient
+                    id="navNeonGrad"
+                    x1="0%"
+                    x2="100%"
+                    y1="0%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stop-color="#a855f7" />
+                    <stop offset="50%" stop-color="#3b82f6" />
+                    <stop offset="100%" stop-color="#84cc16" />
+                  </linearGradient>
+
+                  <!-- glow filter -->
+                  <filter
+                    id="navGlow"
+                    x="-50%"
+                    y="-50%"
+                    width="200%"
+                    height="200%"
+                  >
+                    <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                    <feMerge>
+                      <feMergeNode in="coloredBlur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <text
+                  x="0"
+                  y="50%"
+                  dominant-baseline="middle"
+                  alignment-baseline="middle"
+                  font-family="Orbitron, sans-serif"
+                  font-weight="900"
+                  font-size="90"
+                  letter-spacing="4"
+                  fill="none"
+                  stroke="url(#navNeonGrad)"
+                  stroke-width="4"
+                  stroke-linejoin="round"
+                  style="filter: url(#navGlow); paint-order: stroke"
+                >
+                  [Concepts]
+                </text>
+              </svg>
+            </span>
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Image 1 -->
+            <div
+              class="group rounded-lg overflow-hidden border border-slate-800 bg-brand-dark transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_#a3e635]"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1Il1mEVYC03vHwW1aOM3hypupT73hQJSI&sz=w1000"
+                alt="Neon Nomad Concept 1"
+                class="w-full h-auto object-cover aspect-[4/5] transition-transform duration-500 group-hover:scale-110"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x500/0a0a1a/a3e635?text=Image+Load+Error';"
+              />
+              <div class="p-6">
+                <p class="text-slate-400 mt-2">
+                  Neon curves embrace power; a #CyberSiren reborn through
+                  #ElectricGrace.
+                </p>
+              </div>
+            </div>
+
+            <!-- Image 2 -->
+            <div
+              class="group rounded-lg overflow-hidden border border-slate-800 bg-brand-dark transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_#e879f9]"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1wIGHmO_vZlL_xvu774eOcedNsWjKK8-Q&sz=w1000"
+                alt="Neon Nomad Concept 2"
+                class="w-full h-auto object-cover aspect-[4/5] transition-transform duration-500 group-hover:scale-110"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x500/0a0a1a/a3e635?text=Image+Load+Error';"
+              />
+              <div class="p-6">
+                <p class="text-slate-400 mt-2">
+                  #SleekArmor silhouette defines #Resilience in a luminous
+                  #DigitalRealm.
+                </p>
+              </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div
+              class="group rounded-lg overflow-hidden border border-slate-800 bg-brand-dark transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_#a3e635]"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1f9NvA7EjWJCxh2VLBZ8H2WTe9-CbFHkr&sz=w1000"
+                alt="Neon Nomad Concept 3"
+                class="w-full h-auto object-cover aspect-[4/5] transition-transform duration-500 group-hover:scale-110"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x500/0a0a1a/a3e635?text=Image+Load+Error';"
+              />
+              <div class="p-6">
+                <p class="text-slate-400 mt-2">
+                  #VividHues pulse energy; #Rebellion meets #Rhythm in
+                  #NeonEvolution.
+                </p>
+              </div>
+            </div>
+
+            <!-- Image 4 -->
+            <div
+              class="group rounded-lg overflow-hidden border border-slate-800 bg-brand-dark transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_#e879f9]"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1BRDpMJoaCtMhabgNv-5V6LNllrMngmP1&sz=w1000"
+                alt="Neon Nomad Concept 4"
+                class="w-full h-auto object-cover aspect-[4/5] transition-transform duration-500 group-hover:scale-110"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x500/0a0a1a/a3e635?text=Image+Load+Error';"
+              />
+              <div class="p-6">
+                <p class="text-slate-400 mt-2">
+                  #AngularGeometry and #Bioluminescent tones craft a bold
+                  #AdaptiveVoyager.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="bg-[#0a0a1a] py-16 text-center border-t border-slate-800">
+      <div class="flex flex-col items-center justify-center">
+        <!-- Shared container to align logo and text -->
+        <div class="w-[280px] md:w-[340px] mx-auto flex flex-col items-center">
+          <!-- Logo -->
+          <img
+            src="https://drive.google.com/thumbnail?id=1Vrg3KsJiIvonBHpWed9vKIXwvMNe_pED&sz=w1000"
+            alt="Neon Nomad Fox Logo"
+            class="w-2/3 drop-shadow-[0_0_25px_rgba(132,204,22,0.8)]"
+            onerror="this.onerror=null; this.src='https://placehold.co/200x200/0a0a1a/a3e635?text=Logo+Error';"
+          />
+
+          <div class="h-2"></div>
+
+          <!-- Properly centered SVG -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 600 100"
+            class="w-[220px] md:w-[260px] mx-auto"
+            preserveAspectRatio="xMidYMid meet"
+            aria-label="NEON NOMAD"
+          >
+            <defs>
+              <linearGradient
+                id="footerNeonGrad"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop offset="0%" stop-color="#a855f7" />
+                <stop offset="50%" stop-color="#3b82f6" />
+                <stop offset="100%" stop-color="#84cc16" />
+              </linearGradient>
+
+              <filter
+                id="footerGlow"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+              >
+                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <text
+              x="50%"
+              y="70"
+              text-anchor="middle"
+              font-family="Orbitron, sans-serif"
+              font-weight="900"
+              font-size="68"
+              letter-spacing="3"
+              fill="none"
+              stroke="url(#footerNeonGrad)"
+              stroke-width="4"
+              stroke-linejoin="round"
+              style="filter: url(#footerGlow); paint-order: stroke"
+            >
+              NEON NOMAD
+            </text>
+          </svg>
+        </div>
+
+        <!-- Contact Info -->
+        <div
+          class="mt-4 text-slate-300 font-light text-sm md:text-base space-y-1"
+        >
+          <p>
+            <span class="font-semibold italic text-white tracking-wide"
+              >DIVYANI AGRAWAL</span
+            >
+            &nbsp;|&nbsp; Fashion Designer
+          </p>
+          <p>
+            <a
+              href="mailto:itsdivsofficial@gmail.com"
+              class="hover:text-[#84cc16] transition"
+            >
+              itsdivsofficial@gmail.com
+            </a>
+            &nbsp;|&nbsp; +91 12345 67890 &nbsp;|&nbsp;
+            <a
+              href="https://neonnomad.in"
+              target="_blank"
+              class="hover:text-[#a855f7] transition"
+            >
+              neonnomad.in
+            </a>
+          </p>
+        </div>
+
+        <!-- Tagline -->
+        <p class="mt-4 text-lg text-[#84cc16] italic tracking-wide">
+          Where future roams free
+        </p>
+
+        <!-- Social Links -->
+        <div class="flex flex-wrap gap-5 mt-4">
+            <!-- Instagram -->
+            <a href="#" class="text-slate-400 hover:text-neon-magenta transition-colors" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <!-- TikTok -->
+            <a href="#" class="text-slate-400 hover:text-neon-lime transition-colors" aria-label="TikTok">
+                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </a>
+            <!-- Discord -->
+            <a href="#" class="text-slate-400 hover:text-neon-magenta transition-colors" aria-label="Discord">
+                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"></path><path d="M8.5 14c.828 0 1.5-.895 1.5-2s-.672-2-1.5-2-1.5.895-1.5 2 .672 2 1.5 2z"></path><path d="M15.5 14c.828 0 1.5-.895 1.5-2s-.672-2-1.5-2-1.5.895-1.5 2 .672 2 1.5 2z"></path><path d="M8 17h8v-1.9c0-.6-.4-1.1-1-1.1H9c-.6 0-1 .5-1 1.1V17z"></path></svg>
+            </a>
+            <!-- Behance -->
+            <a href="#" class="text-slate-400 hover:text-neon-lime transition-colors" aria-label="Behance">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path><path d="M8.5 16.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path><path d="M15.5 14h-3"></path><path d="M15.5 11.5a2.5 2.5 0 0 0-3 0V7H9.5v10h3.35a2.5 2.5 0 0 0 2.65-2.5z"></path></svg>
+            </a>
+        </div>
+
+        <div
+          class="w-24 h-[1px] bg-gradient-to-r from-transparent via-slate-700 to-transparent my-8"
+        ></div>
+
+        <p class="text-slate-500 text-xs md:text-sm">
+          © <span id="current-year"></span> Neon Nomad. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+    </script>
+
+    <script>
+      // Simple script to set the current year in the footer
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
